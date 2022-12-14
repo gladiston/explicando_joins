@@ -28,21 +28,21 @@ function JoinsCtrl($scope) {
     },
     inner: {
       query: "SELECT users.name, likes.like FROM users JOIN likes ON users.id = likes.user_id;",
-      desc: "INNER JOIN ou apenas JOIN recupera todos os usuários e curtidas que correspondem entre si (onde o campo id em users corresponde a um user_id na tabela de LIKES e vice-versa)"
+      desc: "INNER JOIN ou apenas JOIN recupera todos os usuários(tabela USERS) e curtidas(tabela LIKES) que correspondem entre si (onde o campo id em USERS corresponde a um user_id na tabela de LIKES e vice-versa)"
     },
     left: {
       query: "SELECT users.name, likes.like FROM users LEFT JOIN likes ON users.id = likes.user_id;",
-      desc: "LEFT JOIN recupera todos os usuários e seus likes, se houver mais algum, define NULL no campo like"
+      desc: "LEFT JOIN recupera todos os usuários(tabela USERS) e suas curtidas(tabela LIKES), se houver mais algum, define NULL no campo like"
     },
     right: {
       query: "SELECT users.name, likes.like FROM users RIGHT JOIN likes ON users.id = likes.user_id;",
-      desc: "RIGHT JOIN é como LEFT JOIN, mas recupera todos os gostos com todos os usuários correspondentes ou NULL se não tiver nenhum usuário correspondente"
+      desc: "RIGHT JOIN é como LEFT JOIN, mas recupera todos as curtidas(tabela LIKES) com todos os usuários(tabela USERS) correspondentes ou NULL se não tiver nenhum usuário correspondente"
     },
     outer: {
       query: "SELECT users.name, likes.like FROM users LEFT OUTER JOIN likes ON users.id = likes.user_id"+
              "<br>UNION"+
              "<br>SELECT users.name, likes.like FROM users RIGHT OUTER JOIN likes ON users.id = likes.user_id",
-      desc: "OUTER JOIN ou OUTER LEFT e RIGHT com UNION (MySQL não suporta FULL OUTER JOIN) recupera todos os usuários e gosta e os combina e define NULL em qualquer um sem correspondência no usuário e a mesma coisa com o usuário sem correspondência"
+      desc: "OUTER JOIN ou OUTER LEFT e RIGHT com UNION (MySQL não suporta FULL OUTER JOIN) recupera todos os usuários(tabela USERS) e curtidas(tabela LIKES) e os combina e define NULL em qualquer um que não haja uma correspondência"
     }
   };
 
